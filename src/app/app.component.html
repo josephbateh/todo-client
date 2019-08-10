@@ -1,3 +1,13 @@
-<div>
-  <app-todo-item></app-todo-item>
-</div>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>{{title}}</span>
+    <span class="mat-toolbar-spacer"></span>
+    <button mat-button>
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<app-todo-list [items]="items">
+
+</app-todo-list>
+

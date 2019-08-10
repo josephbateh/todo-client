@@ -1,12 +1,19 @@
 import {NgModule} from '@angular/core';
-import { TodoItemComponent } from './components/todo-item/todo-item.component';
+import {TodoListItemComponent} from './components/todo-list-item/todo-list-item.component';
+import {MatCardModule} from '@angular/material';
+import {TodoListComponent} from './components/todo-list/todo-list.component';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
-  declarations: [TodoItemComponent],
-  imports: [],
+  declarations: [TodoListItemComponent, TodoListComponent],
+  imports: [
+    MatCardModule,
+    CommonModule
+  ],
   providers: [],
   exports: [
-    TodoItemComponent
+    TodoListItemComponent,
+    TodoListComponent
   ],
   bootstrap: []
 })
