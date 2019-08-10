@@ -1,3 +1,9 @@
-<div *ngFor="let item of items">
-  <app-todo-item [item]="item"></app-todo-item>
+<div *ngIf="!!items">
+  <app-todo-list-input></app-todo-list-input>
+  <div *ngFor="let item of items">
+    <app-todo-item [item]="item"></app-todo-item>
+  </div>
+</div>
+<div *ngIf="!items">
+  No Items
 </div>

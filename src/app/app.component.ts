@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {TodoService} from './modules/todo/services/todo.service';
 import {TodoItem} from './modules/todo/models/todo-item';
 
 @Component({
@@ -6,12 +7,24 @@ import {TodoItem} from './modules/todo/models/todo-item';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Todo App';
-  items: TodoItem[] = [{
-    id: '327d51c8-712b-42ca-b720-93e28c408cc3',
-    description: 'You need to do this thing.',
-    name: 'Todo',
-    isComplete: false
-  }];
+  items: TodoItem[];
+
+  constructor(private readonly todoService: TodoService) {
+
+  }
+
+  ngOnInit() {
+    this.refresh();
+  }
+
+  refresh() {
+    this.todoService.getAll().subscribe((data: TodoItem[]) => {
+      this.items = [];
+      for (const item of data) {
+        this.items = this.items.concat(item);
+      }
+    });
+  }
 }

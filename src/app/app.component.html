@@ -2,12 +2,12 @@
   <mat-toolbar-row>
     <span>{{title}}</span>
     <span class="mat-toolbar-spacer"></span>
-    <button mat-button>
+    <button (click)="refresh()" mat-button>
       <mat-icon>refresh</mat-icon>
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
-<app-todo-list [items]="items">
+<app-todo-list *ngIf="!!items" [items]="items">
 
 </app-todo-list>
 
